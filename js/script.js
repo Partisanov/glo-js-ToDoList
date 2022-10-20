@@ -5,16 +5,7 @@ const headerInput = document.querySelector('.header-input');
 const todoList = document.querySelector('.todo-list');
 const todoCompleted = document.querySelector('.todo-completed');
 
-let toDoData = [
-    {
-        text: 'Сварить кофе',
-        complated: false
-    },
-    {
-        text: 'Помыть посуду',
-        complated: true
-    }
-];
+const toDoData = JSON.parse(localStorage.getItem('toDo')) || [];
 
 const render = function () {
     todoList.innerHTML = '';
@@ -64,9 +55,4 @@ todoControl.addEventListener('submit', function (event) {
     }
 });
 
-if (!localStorage.getItem('toDo')) {
-    localStorage.setItem('toDo', JSON.stringify(toDoData));
-} else {
-    toDoData = JSON.parse(localStorage.getItem('toDo'));
-}
 render();
